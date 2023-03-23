@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+.NavBar {
+  background-color: #278fbb;
+  /* color: white; why doesn't this make it white?  */
+}

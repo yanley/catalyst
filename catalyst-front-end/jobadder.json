@@ -1,0 +1,65 @@
+{
+    "adId": 669163,
+    "title": "Locum O&G Registrar",
+    "reference": "268334",
+    "summary": "Convenient location, great hourly rate... the ideal short term O&G Registrar locum job!",
+    "bulletPoints": [
+      "$180 per hour worked",
+      "Day shifts 27 March - 2 April 2023 (plus on call & weekend)",
+      "Return travel and accommodation provided"
+    ],
+    "description": "<div><strong>Are you an experienced O&amp;G Registrar available for locum work this month?</strong></div> <br> <div>Catalyst Medical Recruitment is working with a hospital in Canberra to find a safe, reliable O&amp;G Registrar to cover night shifts at this modern city hospital.</div> <br> <div><strong>About the Role:</strong></div> <ul> <li>Day shifts 0730-1600 plus on call and weekend shifts 0730-2000</li> <li>$180 per hour worked (inclusive of super, salary packaging available)</li> <li>Accommodation and return travel reimbursed</li> </ul> <br> <div><strong>About You:</strong></div> <ul> <li>Experience working as an O&amp;G Registrar</li> <li>Current general registration with AHPRA</li> <li>Willingness to travel away from home to Canberra</li> </ul> <br> <div><strong>Interested to know more?&nbsp;Let&rsquo;s talk!</strong>&nbsp;</div> <div>Click Apply or call Ian at Catalyst Medical Recruitment on 0477 258 704.</div> <br> <div><em>Catalyst Medical Recruitment is a specialist agency that connects doctors with locum and permanent job opportunities across Australia. We look forward to talking to you.</em></div>",
+    "screening": [
+      {
+        "question": "Do you currently hold unconditional registration with AHPRA?",
+        "answerType": "List",
+        "mandatory": true,
+        "values": [
+          "Yes",
+          "No"
+        ]
+      }
+    ],
+    "portal": {
+      "fields": [
+        {
+          "fieldId": 24023,
+          "fieldName": "Category",
+          "valueId": 1665680,
+          "value": "Healthcare & Medicine",
+          "fields": [
+            {
+              "fieldId": 24024,
+              "fieldName": "Sub Category",
+              "valueId": 1666106,
+              "value": "Medical Practitioner"
+            }
+          ]
+        },
+        {
+          "fieldId": 24027,
+          "fieldName": "Location",
+          "valueId": 1666412,
+          "value": "ACT"
+        },
+        {
+          "fieldId": 24028,
+          "fieldName": "Work Type",
+          "valueId": 1666416,
+          "value": "Temp"
+        }
+      ]
+    },
+    "postedAt": "2023-03-19T04:59:35Z",
+    "updatedAt": "2023-03-19T04:59:35Z",
+    "expiresAt": "2023-04-16T06:00:00Z",
+    "links": {
+      "self": "https://au5api.jobadder.com/v2/jobboards/9429/ads/669163",
+      "applications": "https://au5api.jobadder.com/v2/jobboards/9429/ads/669163/applications",
+      "ui": {
+        "self": "https://apply.jobadder.com/au5/1211/669163/66vyw362ft7u5g3slom75fgfv4?show=details",
+        "applications": "https://apply.jobadder.com/au5/1211/669163/66vyw362ft7u5g3slom75fgfv4"
+      }
+    },
+    "countryCodeHint": "AU"
+  }
