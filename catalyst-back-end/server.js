@@ -17,18 +17,6 @@ app.get("/", (req, res) => {
 let userRoutes = require('./routes/userRoutes')
 app.use('/api/users', userRoutes) //sequelize
 
-// let postRoutes = require('./routes/postRoutes')
-// app.use('/api/posts', postRoutes) //sequelize
-
-// let commentRoutes = require('./routes/commentRoutes')
-// app.use('/api/comments', commentRoutes) //sequelize
-
-// let swapiRoutes = require('./routes/swapiRoutes')
-// app.use('/api/swapi', swapiRoutes) //sequelize
-
-// let userRoutes2 = require('./routes/userRoutes_mysql2')
-// app.use('/api/users2', userRoutes2) //mysql2
-
 // set port, listen for requests
 const PORT = process.env.PORT || 8081;
 
