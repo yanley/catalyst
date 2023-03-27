@@ -2,7 +2,7 @@
 const axios = require("axios");
 const Models = require("../models");
 
-const getUsers = (res) => {
+const getUsers = (req, res) => {
     Models.User.findAll({}).then(function (data) {
         res.send({result: 200 , data: data})
     }).catch(err => {
