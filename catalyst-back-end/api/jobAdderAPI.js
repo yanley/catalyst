@@ -3,21 +3,23 @@ const axios = require('axios');
 // JobAdder API credentials
 const clientId = 'xwty4k3dmq7ulf2vokpzu7uz7y';
 const clientSecret = 'ipbgdq2vbiae7n7gtuhupckhgyr5vcltsxtpuulpghduizet4ppy';
-const scope = 'read write';
+const scope = 'read write offline_access';
+const redirectUri = 'https://dev.team30.com.au/jobs';
 
-const getToken = async () => {
-    const url = 'https://id.jobadder.com/connect/token';
+const getAccessToken = async () => {
+  const url = 'https://id.jobadder.com/connect/authorize';
   const data = new URLSearchParams();
   data.append('grant_type', 'client_credentials');
-  data.append('client_id', client_id);
-  data.append('client_secret', client_secret);
+  data.append('client_id', clientId);
+  data.append('client_secret', clientSecret);
   data.append('scope', scope);
 
   try {
     const response = await axios.post(url, data);
-    const access_token = response.data.access_token;
-    return access_token;
+    const accessToken = response.data.access_token;
+    return accessToken;
   } catch (error) {
+    console.log('the oauth request failed');
     console.error(error);
   }
 };
@@ -35,6 +37,7 @@ function authenticate() {
   params.append('grant_type', 'client_credentials');
   params.append('client_id', clientId);
   params.append('client_secret', clientSecret);
+  params.append('redirect_uri', redirectUri);
 
   const config = {
     headers: {
@@ -87,8 +90,3 @@ function sendApiRequest(endpoint, method, data) {
     });
 }
 
-// Example usage: obtain a list of jobs from the JobAdder API
-makeApiRequest('/jobs')
-  .then(data => {
-    console.log(data);
-  });

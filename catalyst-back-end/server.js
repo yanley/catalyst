@@ -4,7 +4,7 @@ const cors = require('cors'); //in case of issues connecting frontend to backend
 const jobRoutes = require('./routes/jobRoutes');
 
 require("dotenv").config();
-require("./dbConnect"); //example using Sequelize package
+// require("./dbConnect"); //example using Sequelize package
 
 // parse requests of content-type - application/json
 app.use(express.json());
