@@ -4,9 +4,8 @@ const axios = require('axios');
 const clientId = 'xwty4k3dmq7ulf2vokpzu7uz7y';
 const clientSecret = 'ipbgdq2vbiae7n7gtuhupckhgyr5vcltsxtpuulpghduizet4ppy';
 const scope = 'read write offline_access';
-const redirectUri = 'https://dev.team30.com.au/jobs';
 
-const getAccessToken = async () => {
+const getAccessToken = () => {
   const url = 'https://id.jobadder.com/connect/authorize';
   const data = new URLSearchParams();
   data.append('grant_type', 'client_credentials');
@@ -14,14 +13,15 @@ const getAccessToken = async () => {
   data.append('client_secret', clientSecret);
   data.append('scope', scope);
 
-  try {
-    const response = await axios.post(url, data);
-    const accessToken = response.data.access_token;
-    return accessToken;
-  } catch (error) {
-    console.log('the oauth request failed');
-    console.error(error);
-  }
+  return axios.post(url, data)
+    .then(response => {
+      const accessToken = response.data.access_token;
+      return accessToken;
+    })
+    .catch(error => {
+      console.log('the oauth request failed');
+      console.error(error);
+    });
 };
 
 // JobAdder API endpoint
@@ -89,4 +89,3 @@ function sendApiRequest(endpoint, method, data) {
       console.log(error);
     });
 }
-

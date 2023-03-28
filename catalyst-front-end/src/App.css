@@ -37,7 +37,11 @@
   }
 }
 
-.NavBar {
+.my-navbar {
   background-color: #278fbb;
-  /* color: white; why doesn't this make it white?  */
+  color: white !important;
+}
+
+.my-card {
+  background-color: pink;
 }

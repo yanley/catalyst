@@ -5,15 +5,12 @@ import Navbar from 'react-bootstrap/Navbar';
 function NavBar() {
   return (
     <>
-    <Navbar className="NavBar">
+    <Navbar className="NavBar my-navbar" variant="light">
         <Container>
-          <Navbar.Brand href="#home">Home</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="#about">About</Nav.Link>
+          <Navbar.Brand href="#jobs">Jobs</Navbar.Brand>
+          {/* <Nav className="me-auto">
             <Nav.Link href="#jobs">Jobs</Nav.Link>
-            <Nav.Link href="#faqs">FAQs</Nav.Link>
-            <Nav.Link href="#contact">Contact</Nav.Link>
-          </Nav>
+          </Nav> */}
         </Container>
       </Navbar>
     </>
