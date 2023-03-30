@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require('cors'); //in case of issues connecting frontend to backend
 const jobRoutes = require('./routes/jobRoutes');
+const dbConnect = require("./dbConnect");
 
 require("dotenv").config();
 // require("./dbConnect"); //example using Sequelize package
@@ -15,6 +16,7 @@ app.use('/api', jobRoutes);
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to my MySQL JobAdder application." });
 });
+
 
 let userRoutes = require('./routes/userRoutes')
 app.use('/api/users', userRoutes) //sequelize
