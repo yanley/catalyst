@@ -52,7 +52,7 @@ import { mockData } from './mockData';
   
 //   export default MockDataCards;
 
-  function MockDataCards() {
+  function MockJobCards() {
     return (
       <>
         <Row xs={1} md={2} lg={3} className="g-4">
@@ -69,7 +69,7 @@ import { mockData } from './mockData';
                       ))}
                     </ul>
                   </Card.Text>
-                  <Card.Link href="#">More details</Card.Link>
+                  <Card.Link href={job.links.ui.self} target="_blank">More details</Card.Link>
                 </Card.Body>
               </Card>
             </Col>
@@ -79,5 +79,5 @@ import { mockData } from './mockData';
     );
   }
   
-  export default MockDataCards;
+  export default MockJobCards;
   

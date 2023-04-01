@@ -3,6 +3,9 @@ const app = express();
 const cors = require('cors'); //in case of issues connecting frontend to backend
 const jobRoutes = require('./routes/jobRoutes');
 const dbConnect = require("./dbConnect");
+const userRoutes = require('./routes/userRoutes');
+const bodyParser = require("body-parser");
+const { addHook } = require("./models/job");
 
 require("dotenv").config();
 // require("./dbConnect"); //example using Sequelize package
@@ -12,13 +15,23 @@ app.use(express.json());
 app.use(cors());
 app.use('api', require('./routes/userRoutes'));
 app.use('/api', jobRoutes);
+app.use('/api/users', userRoutes);
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to my MySQL JobAdder application." });
 });
 
+app.post('/api/users/login', (req, res) => {
+    //extract the email and password from the request
+    const { email, password } = req.body;
 
-let userRoutes = require('./routes/userRoutes')
+    //check if the email and password are valid
+    //if so, create a JWT and send it back in response
+    //it not, send an error message
+});
+
 app.use('/api/users', userRoutes) //sequelize
 
 // set port, listen for requests

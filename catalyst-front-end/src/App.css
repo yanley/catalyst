@@ -39,19 +39,18 @@
 }
 
 .my-navbar {
-  background-color: #278fbb;
-  color: white !important;
+  background-color: #63c5ee;
+  color: white; /*why doesn't this take effect? */
 }
 
-.my-card {
-  background-color: pink;
+.my-navbar .navbar-brand, .my-navbar .nav-link {
+  color: white;
 }
 
-.auth-form-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.my-card ul {
+  list-style: square;
   text-align: left;
+  
 }
 
 .label {
@@ -60,16 +59,16 @@
 }
 
 input {
-  margin: 0.5rem 0;
-  padding: 1rem;
-  border-radius: 10px;
+  margin: 2rem;
+  padding: 0.5rem;
+  border-radius: 7px;
   border: none;
 }
 
 Button {
   border: none;
   background-color: white;
-  padding: 10px;
+  padding: 2px;
   border-radius: 10px;
   color: 278fbb;
 }
@@ -80,7 +79,9 @@ Button {
   text-decoration: underline;
 }
 
-.auth-form-container {
-  padding: 0.5rem;
+.auth-form-container input {
+  margin: 0.5rem;
   border-radius: 5px;
 }
+
+
