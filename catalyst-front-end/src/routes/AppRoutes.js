@@ -3,6 +3,7 @@ import PageNotFound from '../pages/PageNotFound';
 import LoginPage from '../pages/LoginPage';
 import MockJobCards from '../components/MockJobCards';
 import RegistrationPage from '../pages/RegistrationPage';
+import Profile from '../pages/Profile';
 
 export const AppRoutes = (props) => {
 
@@ -15,6 +16,8 @@ export const AppRoutes = (props) => {
             <Route path='/login' element={<LoginPage />} />
 
             <Route path='/register' element={<RegistrationPage {...props} />} />
+
+            <Route path='/profile' element={<Profile />} />
 
             {/* special route to handle if none of the above match */}
             <Route path="*" element={<PageNotFound />} />

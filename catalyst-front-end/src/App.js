@@ -8,6 +8,8 @@ import { AppRoutes } from './routes/AppRoutes';
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
 
   const toggleForm = (formName) => {
     setCurrentForm(formName);

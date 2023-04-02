@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import Form from 'react-bootstrap/Form';
 import {
   MDBBtn,
   MDBContainer,
@@ -18,6 +19,15 @@ const RegistrationPage = (props) => {
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [seniority, setSeniority] = useState('');
+    const [specialty, setSpecialty] = useState('');
+    // const user = JSON.parse(localStorage.getItem('user'));
+    // const userId = user.id;
+    const user = JSON.parse(localStorage.getItem('user')) || {};
+    const userId = user.id || null;
+    
+    const seniorityOptions = ['Intern', 'Resident Medical Officer', 'Registrar', 'CMO/SMO', 'Consultant'];
+    const specialtyOptions = ['Cardiology', 'Dermatology', 'Endocrinology', 'Gastroenterology', 'Neurology', 'Oncology', 'Psychiatry'];
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -84,6 +94,21 @@ const RegistrationPage = (props) => {
 
                 <MDBInput wrapperClass='mb-4' value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="you@mail.com" label='Email' id='form1' />
                 <MDBInput wrapperClass='mb-4' value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="********" label='Password' id='form1' />
+
+                <Form.Select className='form-select' value={seniority} onChange={e => setSeniority(e.target.value)}>
+                  <option value=''>Select Seniority</option>
+                  {seniorityOptions.map(option => (
+                    <option key={option} value={option}>{option}</option>
+                  ))}
+                </Form.Select>
+                <br></br>
+                <Form.Select className='form-select' value={specialty} onChange={e => setSpecialty(e.target.value)}>
+                  <option value=''>Select Specialty</option>
+                  {specialtyOptions.map(option => (
+                    <option key={option} value={option}>{option}</option>
+                  ))}
+                </Form.Select>
+                <br></br>
 
                 <MDBBtn className='w-100 mb-4' size='md'>Sign Up</MDBBtn>
             </form>

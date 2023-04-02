@@ -21,10 +21,17 @@ User.init({
     },
     password: {
         type: DataTypes.STRING, allowNull: false, required: true
-    }}, 
-    {
-        sequelize: sequelizeInstance, modelName: 'users', //use lowercase plural format
-        timestamps: true, freezeTableName: true
+    },
+    seniority: {
+        type: DataTypes.STRING, allowNull: true // Add new optional field for seniority
+    },
+    specialty: {
+        type: DataTypes.STRING, allowNull: true // Add new optional field for specialty
     }
-)
+}, 
+{
+    sequelize: sequelizeInstance, modelName: 'users',
+    timestamps: true, freezeTableName: true
+});
+
 module.exports = User;

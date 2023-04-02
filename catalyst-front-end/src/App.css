@@ -68,9 +68,9 @@ input {
 Button {
   border: none;
   background-color: white;
-  padding: 2px;
+  padding: 1px;
   border-radius: 10px;
-  color: 278fbb;
+  background-color: #278fbb;
 }
 
 .link-btn {
