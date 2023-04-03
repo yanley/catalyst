@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import Form from 'react-bootstrap/Form';
+import PersonalInformation from '../components/MatchingJobs';
 import {
   MDBBtn,
   MDBContainer,
@@ -18,18 +19,17 @@ import {
 from 'mdb-react-ui-kit';
 
 const Profile = (props) => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [seniority, setSeniority] = useState('');
-  const [specialty, setSpecialty] = useState('');
-  const user = JSON.parse(localStorage.getItem('user'));
-  const userId = user.id;
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [seniority, setSeniority] = useState('');
+    const [specialty, setSpecialty] = useState('');
+    const user = JSON.parse(localStorage.getItem('user'));
+    const userId = user.id;
 
-  const seniorityOptions = ['Intern', 'Resident Medical Officer', 'Registrar', 'CMO/SMO', 'Consultant'];
-  const specialtyOptions = ['Cardiology', 'Dermatology', 'Endocrinology', 'Gastroenterology', 'Neurology', 'Oncology', 'Psychiatry'];
-
+    const seniorityOptions = ['Resident Medical Officer', 'Registrar', 'Consultant'];
+    const specialtyOptions = ['Emergency Medicine', 'Medicine', 'Obstetrics & Gynaecology', 'Psychiatry', 'Radiology', 'Surgery'];
 
 const UpdateRecord = (e) => {
 e.preventDefault();
@@ -92,9 +92,9 @@ const confirmDelete = () => {
 }
 
   return (
-    <MDBContainer fluid className='p-4'>
-
-      <MDBRow>
+          <MDBContainer fluid className='p-4'>
+            <PersonalInformation />
+          <MDBRow>
 
         <MDBCol md='6' className='text-center text-md-start d-flex flex-column justify-content-top'>
 
@@ -121,12 +121,12 @@ const confirmDelete = () => {
                 </MDBCol>
 
                 <MDBCol col='6'>
-                    <MDBInput wrapperClass='mb-3' value={lastName} name="lastName" onChange={(e) => setLastName(e.target.value)} label='Last Name' id='form1' type='text'/>
+                    <MDBInput wrapperClass='mb-3' value={lastName} name="lastName" onChange={(e) => setLastName(e.target.value)} label='Last Name' id='form1' type='text' />
                 </MDBCol>
                 </MDBRow>
 
                 <MDBInput wrapperClass='mb-3' value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="you@mail.com" label='Email' id='form1' />
-                <MDBInput wrapperClass='mb-3' value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="********" label='Password' id='form1' />
+                {/* <MDBInput wrapperClass='mb-3' value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="********" label='Password' id='form1' readonly /> */}
 
                 <Form.Select className='form-select' value={seniority} onChange={e => setSeniority(e.target.value)}>
                   <option value=''>Select Seniority</option>
@@ -165,8 +165,12 @@ const confirmDelete = () => {
 
     </MDBRow>
 
+
+
   </MDBContainer>
+
 );
 }
 
 export default Profile;
+

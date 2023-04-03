@@ -26,8 +26,8 @@ const RegistrationPage = (props) => {
     const user = JSON.parse(localStorage.getItem('user')) || {};
     const userId = user.id || null;
     
-    const seniorityOptions = ['Intern', 'Resident Medical Officer', 'Registrar', 'CMO/SMO', 'Consultant'];
-    const specialtyOptions = ['Cardiology', 'Dermatology', 'Endocrinology', 'Gastroenterology', 'Neurology', 'Oncology', 'Psychiatry'];
+    const seniorityOptions = ['Resident Medical Officer', 'Registrar', 'Consultant'];
+    const specialtyOptions = ['Emergency Medicine', 'Medicine', 'Obstetrics & Gynaecology', 'Psychiatry', 'Radiology', 'Surgery'];
 
     const handleSubmit = (e) => {
         e.preventDefault();

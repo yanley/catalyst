@@ -33,15 +33,15 @@ const NavBar = (props) => {
         <Navbar.Brand href="/">Catalyst Medical Recruitment</Navbar.Brand>
         <img
             src={Logo}
-            width="70"
-            height="70"
+            width="90"
+            height="90"
             className="d-inline-block align-top"
             alt="Logo"
           />
         <Nav className="login-link">
           {user.firstName ?
             <Nav.Link href="/profile">
-              Welcome back, Dr {user.lastName} <MDBBtn outline onClick={handleLogout} color='primary' size='sm'>Log Out</MDBBtn>
+              Dr {user.lastName}'s Profile <MDBBtn outline onClick={handleLogout} color='primary' size='sm'>Log Out</MDBBtn>
             </Nav.Link> :
             <Nav.Link href="/login">Log In / Register</Nav.Link>
           }

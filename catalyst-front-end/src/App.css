@@ -1,6 +1,9 @@
 .App {
   text-align: center;
-  background-image: linear-gradient(79deg, #278fbb, cyan 48%, rgb(179, 221, 255));
+  /* background-image: linear-gradient(79deg, #278fbb, rgb(43, 147, 147) 48%, rgb(212, 231, 247)); */
+  /* background: linear-gradient(to right, #2193b0, #6dd5ed); */
+  /* background: linear-gradient(to right, #bdc3c7, #2c3e50); */
+  background: linear-gradient(to right, #2980b9, #6dd5fa, #ffffff);
 }
 
 .App-logo {
@@ -39,7 +42,8 @@
 }
 
 .my-navbar {
-  background-color: #63c5ee;
+  /* background-color: #63c5ee; */
+  background: linear-gradient(to right, #2980b9, #6dd5fa, #ffffff);
   color: white; /*why doesn't this take effect? */
 }
 
