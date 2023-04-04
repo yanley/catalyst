@@ -146,7 +146,7 @@ const confirmDelete = () => {
                 <MDBBtn className='w-100 mb-2' size='md'>Save Changes</MDBBtn>
             </Form>
             <MDBBtn onClick={onDelete} className='me-1' color='danger'>Delete Your Profile</MDBBtn>
-        <MDBModal show={deleteModal} onHide={handleClose} centered>
+        <MDBModal show={deleteModal} onHide={handleClose} centered >
             <MDBModalHeader>
                 <MDBModalTitle>Delete Account</MDBModalTitle>
             </MDBModalHeader>
