@@ -1,5 +1,6 @@
-  import React, { useState } from 'react';
+  import React, { useState, useEffect } from 'react';
   import Card from 'react-bootstrap/Card';
+  import axios from 'axios';
   import {
     MDBCard,
     MDBCardHeader,
@@ -7,6 +8,7 @@
     MDBCardTitle,
     MDBCardText,
     MDBCardFooter,
+    MDBIcon,
     MDBBtn
   } from 'mdb-react-ui-kit';
   import CardGroup from 'react-bootstrap/CardGroup';
@@ -19,6 +21,54 @@
     const [selectedSeniority, setSelectedSeniority] = useState('');
     const [selectedSpecialty, setSelectedSpecialty] = useState('');
     const [selectedLocation, setSelectedLocation] = useState('');
+
+    ///// code below added 1pm Tuesday
+
+    const [savedJobs, setSavedJobs] = useState([]);
+    const user = JSON.parse(localStorage.getItem('user'));
+    const userId = user.id;
+    
+    const Job = ({ job, userId, updateSavedJobs }) => {
+      const [savedJobs, setSavedJobs] = useState([]);
+    
+      useEffect(() => {
+        updateSavedJobs(userId, job.id);
+      }, [savedJobs]);
+    
+      return (
+        <div>
+          <MDBIcon
+            far
+            icon="heart"
+            onClick={() => setSavedJobs((prevSavedJobs) => [...prevSavedJobs, job])}
+          />
+          <h3>{job.title}</h3>
+          <p>{job.bulletpoints}</p>
+        </div>
+      );
+    };
+    
+    const updateSavedJobs = async (userId, jobId, job) => {
+      const config = {
+        headers: { 'Content-Type': 'application/json' },
+      };
+      try {
+        const response = await axios.post('http://localhost:8081/api/favourites/addfavourite', { user_id: userId, job_id: job.adId }, config);
+        console.log(response.data); 
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    
+    const handleJobClick = (jobId, job) => {
+      const userId = localStorage.getItem('user_id');
+      updateSavedJobs(userId, jobId, job);
+    }
+    
+    
+    
+    /// code above added 1pm Tuesday
+   
   
     const handleSeniorityFilter = (seniority) => {
       setSelectedSeniority(seniority);
@@ -110,23 +160,36 @@
                         ))}
                       </ul>
                     </MDBCardText>
-                    <Card.Link href={job.links.ui.self} target="_blank">
+                  </MDBCardBody>
+                  {/* <MDBCardFooter>
+                    {job.specialty} {job.seniority}
+                  </MDBCardFooter> */}
+                  <MDBCardFooter>
+                    {job.city} {job.state}
+                  </MDBCardFooter>
+                  <MDBCardFooter>
+                  <Card.Link href={job.links.ui.self} target="_blank">
                       More details
                     </Card.Link><br></br>
                     <MDBBtn size="sm" href={job.links.ui.applications} target="_blank">Apply</MDBBtn>
-                  </MDBCardBody>
-                  <MDBCardFooter>
-                    {job.specialty} {job.seniority}
                   </MDBCardFooter>
                   <MDBCardFooter>
-                    {job.city} {job.state}
+                    <MDBIcon 
+                      far 
+                      icon="heart"
+                      // onClick={() => setSavedJobs((prevSavedJobs) => [...prevSavedJobs, job])}
+                      />
                   </MDBCardFooter>
                 </MDBCard>
               </Col>
             ))}
           </Row>
         ) : (
-          <p>Sorry, there are currently no jobs that match your search criteria. Get in touch and we'll be happy to do a tailored search on your behalf.</p>
+          <MDBCard>
+            <MDBCardText>
+            Sorry, there are currently no jobs that match your search criteria. Get in touch and we'll be happy to do a tailored search on your behalf.
+            </MDBCardText>
+          </MDBCard>
         )}
       </>
     );

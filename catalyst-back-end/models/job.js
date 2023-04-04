@@ -18,7 +18,7 @@ Job.init({
     },
     bulletPoints: {
         type: DataTypes.STRING, allowNull: false, required: true, unique: true
-    }}, //how do I pull the job apply link and location through?
+    }}, 
     {
         sequelize: sequelizeInstance, modelName: 'jobs', //use lowercase plural format
         timestamps: true, freezeTableName: true

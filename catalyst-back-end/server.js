@@ -4,6 +4,7 @@ const cors = require('cors'); //in case of issues connecting frontend to backend
 const jobRoutes = require('./routes/jobRoutes');
 const dbConnect = require("./dbConnect");
 const userRoutes = require('./routes/userRoutes');
+const favouriteRoutes = require('./routes/favouriteRoutes');
 const bodyParser = require("body-parser");
 const { addHook } = require("./models/job");
 
@@ -14,8 +15,10 @@ require("dotenv").config();
 app.use(express.json());
 app.use(cors());
 app.use('api', require('./routes/userRoutes'));
+app.use('api', require('./routes/favouriteRoutes'));
 app.use('/api', jobRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/favourites', favouriteRoutes);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -33,6 +36,7 @@ app.post('/api/users/login', (req, res) => {
 });
 
 app.use('/api/users', userRoutes) //sequelize
+app.use('/api/favourites', favouriteRoutes)
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8081;
