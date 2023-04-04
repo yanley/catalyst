@@ -35,7 +35,9 @@ const RegistrationPage = (props) => {
             firstName: firstName,
             lastName: lastName,
             emailId: email,
-            password: password
+            password: password,
+            seniority: seniority,
+            specialty: specialty
           })
           .then(response => {
             console.log(response.data);
@@ -48,8 +50,8 @@ const RegistrationPage = (props) => {
               console.log(response.data);
               //Save the access token to local storage or cookie
               localStorage.setItem('accessToken', response.data.accessToken);
-              //Redirect the user to the home page
-              window.location.href = '/';
+              //Redirect the user to the login page
+              window.location.href = '/login';
             })
           })
           .catch(error => {

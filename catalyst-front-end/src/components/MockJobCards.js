@@ -1,68 +1,63 @@
-  import React, { useState, useEffect } from 'react';
-  import Card from 'react-bootstrap/Card';
-  import axios from 'axios';
-  import {
-    MDBCard,
-    MDBCardHeader,
-    MDBCardBody,
-    MDBCardTitle,
-    MDBCardText,
-    MDBCardFooter,
-    MDBIcon,
-    MDBBtn
-  } from 'mdb-react-ui-kit';
-  import CardGroup from 'react-bootstrap/CardGroup';
-  import Col from 'react-bootstrap/Col';
-  import Row from 'react-bootstrap/Row';
-  import { mockData } from './mockData';
-
+import React, { useState, useEffect } from 'react';
+import Card from 'react-bootstrap/Card';
+import axios from 'axios';
+import {
+  MDBCard,
+  MDBCardHeader,
+  MDBCardBody,
+  MDBCardTitle,
+  MDBCardText,
+  MDBCardFooter,
+  MDBIcon,
+  MDBBtn
+} from 'mdb-react-ui-kit';
+import CardGroup from 'react-bootstrap/CardGroup';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import { mockData } from './mockData';
 
   function MockJobCards() {
     const [selectedSeniority, setSelectedSeniority] = useState('');
     const [selectedSpecialty, setSelectedSpecialty] = useState('');
     const [selectedLocation, setSelectedLocation] = useState('');
 
-    ///// code below added 1pm Tuesday
-
+    ///// code below added 1pm Tuesday​
     const [savedJobs, setSavedJobs] = useState([]);
-    const user = JSON.parse(localStorage.getItem('user'));
-    const userId = user.id;
+
+    useEffect(() => {
+      async function fetchSavedJobs() {
+        try {
+          const user = JSON.parse(localStorage.getItem('user'));
+          const response = await axios.get(`http://localhost:8081/api/favourites/${user.id}`);
+          setSavedJobs(response.data.map((job) => job.ad_id));
+        } catch (error) {
+          console.error(error);
+        }
+      }
+  
+      fetchSavedJobs();
+    }, []);
     
-    const Job = ({ job, userId, updateSavedJobs }) => {
-      const [savedJobs, setSavedJobs] = useState([]);
-    
-      useEffect(() => {
-        updateSavedJobs(userId, job.id);
-      }, [savedJobs]);
-    
-      return (
-        <div>
-          <MDBIcon
-            far
-            icon="heart"
-            onClick={() => setSavedJobs((prevSavedJobs) => [...prevSavedJobs, job])}
-          />
-          <h3>{job.title}</h3>
-          <p>{job.bulletpoints}</p>
-        </div>
-      );
-    };
-    
-    const updateSavedJobs = async (userId, jobId, job) => {
+    const updateSavedJobs = async (userId, job) => {
       const config = {
         headers: { 'Content-Type': 'application/json' },
       };
+      const favJob = { user_id: userId, ad_id: job.adId }; // new favourite job details
+      console.log(favJob)
+
       try {
-        const response = await axios.post('http://localhost:8081/api/favourites/addfavourite', { user_id: userId, job_id: job.adId }, config);
+        const response = await axios.post('http://localhost:8081/api/favourites/addfavourite', favJob, config);
         console.log(response.data); 
+        setSavedJobs(prevJobs => [...prevJobs, job.adId])
       } catch (error) {
         console.error(error);
-      }
+      } 
     };
     
-    const handleJobClick = (jobId, job) => {
-      const userId = localStorage.getItem('user_id');
-      updateSavedJobs(userId, jobId, job);
+    const handleJobClick = (job) => {
+      let user = localStorage.getItem('user'); // get user object out of local storage
+      user = JSON.parse(user); // parse into object
+      updateSavedJobs(user.id, job); // use the id when saving a job
     }
     
     
@@ -161,9 +156,6 @@
                       </ul>
                     </MDBCardText>
                   </MDBCardBody>
-                  {/* <MDBCardFooter>
-                    {job.specialty} {job.seniority}
-                  </MDBCardFooter> */}
                   <MDBCardFooter>
                     {job.city} {job.state}
                   </MDBCardFooter>
@@ -176,8 +168,9 @@
                   <MDBCardFooter>
                     <MDBIcon 
                       far 
+                      className={savedJobs.find(savedjobid => savedjobid === job.adId) ? 'saved' : 'unsaved'}
                       icon="heart"
-                      // onClick={() => setSavedJobs((prevSavedJobs) => [...prevSavedJobs, job])}
+                      onClick={() => handleJobClick(job)}
                       />
                   </MDBCardFooter>
                 </MDBCard>

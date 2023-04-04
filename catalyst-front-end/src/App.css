@@ -88,4 +88,10 @@ Button {
   border-radius: 5px;
 }
 
+.saved {
+  background-color: red;
+}
 
+.unsaved {
+  background-color: grey;
+}

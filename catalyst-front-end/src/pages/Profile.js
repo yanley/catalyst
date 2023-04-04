@@ -31,6 +31,7 @@ const Profile = (props) => {
     const seniorityOptions = ['Resident Medical Officer', 'Registrar', 'Consultant'];
     const specialtyOptions = ['Emergency Medicine', 'Medicine', 'Obstetrics & Gynaecology', 'Psychiatry', 'Radiology', 'Surgery'];
 
+
 const UpdateRecord = (e) => {
 e.preventDefault();
 const data = {
